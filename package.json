@@ -1,0 +1,19 @@
+{
+  "name": "liri-app",
+  "version": "1.0.0",
+  "description": "Peter Fitzgerald Liri App JSON package",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/petefitz4/liri-node-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/petefitz4/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/petefitz4/liri-node-app#readme"
+}
