@@ -14,15 +14,19 @@ var dataKey = require("./keys.js");
 //`movie-this`
 //`do-what-it-says`
 var commands = process.argv[2];
+
 //build array for multiple word entry search
 var search = "";
+searchArray = process.argv;
+
 
 function commandInput(commands, search){
 	search = getMoreWords();
 
 	switch (commands) {
 		//get list of tweets
-		case "my-tweets":myTweets();
+		case "my-tweets": myTweets();
+		console.log("tweet");
 		break;
 		
 		//get song info
@@ -36,18 +40,15 @@ function commandInput(commands, search){
 		else {
 			searchSongInfo(songName);
 		}
+		console.log("search songs");
 		break;
 		
 		//get movie info
 		//associate search string to variable based on command name
-		case "movie-this": searchMovieInfo(search);break;
+		case "movie-this": searchMovieInfo(search);
+		console.log("movie this");
+		break;
 		
-		//var movieName = search;
-		//if no movie name entered then default to Mr Nobody
-		//if (movieName === ""){
-		//searchMovieInfo("Mr. Nobody");}
-		//else {searchMovieInfo(movieName);}
-
 		//get info from text file
 		case "do-what-it-says": doWhatItSays();
 		break;
@@ -56,10 +57,14 @@ function commandInput(commands, search){
 
 //for loop to obtain additional words in string search
 function getMoreWords(){
-	searchArray = process.argv;
-
-	for (var i =3; i <searchArray.length;i++){
-		search += searchArray[i];
+	
+	for (var i = 3; i < searchArray.length; i++){
+		if (i > 3 && i < searchArray.length){
+			search = search + "+" + searchArray[i];
+		}
+		else {
+			search += searchArray[i];
+		}
 	}
 	return search;
 }
@@ -112,6 +117,7 @@ function searchSongInfo(songName){
  					console.log("Song: "+ data.tracks.items[i].name);
  					console.log("Preview Link: " + data.tracks.items[i].preview_url);
  					console.log("Album: " + data.tracks.items[i].album.name);
+ 					logOutput("Artist: " + data.tracks.items[i].artists[0].name);
  				};			  			
   			};
 		}
@@ -172,6 +178,7 @@ function searchMovieInfo(movieName){
 				console.log("Language: "+ info.Language + "\n");
 				console.log("Plot: " + info.Plot + "\n");	
 				console.log("Actors: " + info.Actors + "\n");
+				logOutput("Title: " + info.Title);
 			}
 			else {
 				console.log("Error occurred" + error);
