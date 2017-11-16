@@ -75,6 +75,7 @@ function getMoreWords(){
 function myTweets(){
 	//grab twitter keys from keys.js
 	var client = new Twitter(dataKey.twitterKeys);
+	console.log(dataKey.twitterKeys)
 	//search parameter for last 20 tweets with my username
 	var params = {q: '@BeersLax', count: 20};
 	//search function syntax
@@ -211,6 +212,7 @@ function logOutput(logData){
 	});
 }
 
-
+console.log(commandInput);
+commandInput();
 
 
